@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<script>
+    onclick = ()=>{
+        onclick=()=>{}
+    ws = new WebSocket("ws://192.168.1.171:8080")
+    aud = new AudioContext({sampleRate:8000})
+aud.audioWorklet.addModule("module.js").then((e)=>{
+
+
+
+
+
+navigator.mediaDevices.getUserMedia({audio:true}).then((v)=>{
+
+awn = new AudioWorkletNode(aud,"stream_module")
+awn.port.start()
+awn.port.onmessage=(e)=>{
+    try{
+    ws.send(e.data)
+    jj = e.data
+    }catch{}
+}
+ws.onmessage=(e)=>{
+
+e.data.arrayBuffer().then((abf)=>{
+awn.port.postMessage(new Float32Array(abf))
+//console.log(new Float32Array(abf))
+})
+//console.log(new Float32Array(e.data))
+}
+
+
+    med = aud.createMediaStreamSource(v).connect(awn).connect(aud.destination)
+    med.connect(awn).connect(aud.destination)
+
+
+
+
+})
+/*
+osc = aud.createOscillator()
+osc.start()
+*/
+//osc
+//osc.connect(aud.destination)
+   })
+    }
+</script>
