@@ -42,7 +42,7 @@ function reset(){
 
 function add(data1,data2){
     var ans = new Float32Array(Math.min(data1.length,data2.length))
-    for(let n=0;n<Math.min(data1.length,data2.length);n++){
+    for(let n=0;n<Math.max(data1.length,data2.length);n++){
         ans[n]=(data1[n]+data2[n])
     }
     return ans
