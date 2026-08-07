@@ -67,7 +67,7 @@ if(acc>=war.length){
         for(let n=ws.id+1;n<war.length;n++){
             war[n].id--
         }
-        
+        if(this.acc) acc--
         war.splice(this.id,1)
     }
 })
