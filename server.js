@@ -55,7 +55,7 @@ ws.acc = 0
         if(!ws.acc){
             ws.acc=1
             acc++
-buf = e.data//add(e.data,buf)
+buf = buf//e.data//add(e.data,buf)
 if(acc>=war.length){
     
     broadcast(buf)
