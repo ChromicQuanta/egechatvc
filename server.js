@@ -2,7 +2,7 @@ W = require("ws")
 fs = require("fs")
 http = require("http")
 
-http.createServer((q,s)=>{
+const httpServer = http.createServer((q,s)=>{
     if(q.url.includes("module.js")){
     fs.readFile("module.js",(e,d)=>{
 s.writeHeader(200,{"Content-Type":"application/javascript"})
@@ -18,7 +18,7 @@ s.writeHeader(200,{"Content-Type":"application/javascript"})
 }).listen(80)
 
 
-srv = new W.Server({port:8080})
+srv = new W.Server({server: httpServer, path: "/ws", })
 war = []
 
 function broadcast(buf){
