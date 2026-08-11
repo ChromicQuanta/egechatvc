@@ -1,5 +1,21 @@
 <!DOCTYPE html>
+
+<canvas width=128 height=128 id="can"></canvas>
 <script>
+c = can.getContext("2d")
+
+function Plot(arr){
+    c.fillStyle="#000"
+    c.strokeStyle="#FFF"
+    c.fillRect(0,0,128,128)
+    for(n=0;n<127;n++){
+        c.moveTo(n,64-arr[n])
+        c.lineTo(n+1,64-arr[n+1])
+        c.stroke()
+    }
+}
+
+
     onclick = ()=>{
         onclick=()=>{}
     ws = new WebSocket("ws://192.168.1.171:8080")
@@ -24,6 +40,7 @@ ws.onmessage=(e)=>{
 
 e.data.arrayBuffer().then((abf)=>{
 awn.port.postMessage(new Float32Array(abf))
+Plot(new Float32Array(abf))
 //console.log(new Float32Array(abf))
 })
 //console.log(new Float32Array(e.data))
