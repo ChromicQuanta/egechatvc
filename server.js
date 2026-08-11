@@ -63,7 +63,7 @@ ws.acc = 0
             acc++
 buf = add(new Float32Array(e.data.buffer),buf)
 
-EE=new Float32Array(e.data)
+EE=new Float32Array(buf)
 
 if(acc>=war.length){
     
