@@ -57,9 +57,9 @@ ws.acc = 0
             acc++
 buf = add(e.data,buf)
 if(acc>=war.length){
-    reset()
-    broadcast(buf)
     
+    broadcast(buf)
+    reset()
 }
         }
     }
