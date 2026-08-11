@@ -51,14 +51,14 @@ srv.on("connection",(ws)=>{
 ws.id = war.push(ws)
 ws.acc = 0
     ws.onmessage=(e)=>{
-        //ws.send(e.data)
+        ws.send(e.data)
         if(!ws.acc){
             ws.acc=1
             acc++
-buf = add(e.data,buf)
+//buf = add(e.data,buf)
 if(acc>=war.length){
-    broadcast(buf)
-    reset()
+    //broadcast(buf)
+    //reset()
 }
         }
     }
