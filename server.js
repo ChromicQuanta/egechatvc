@@ -33,9 +33,9 @@ setInterval(()=>{
 acc = 0
 
 function reset(){
+    acc=0
     for(let n=0;n<war.length;n++){
         war[n].acc = 0
-        acc=0
     }
     buf = new Float32Array(128)
 }
@@ -51,14 +51,15 @@ srv.on("connection",(ws)=>{
 ws.id = war.push(ws)
 ws.acc = 0
     ws.onmessage=(e)=>{
-        ws.send(e.data)
+      //  ws.send(e.data)
         if(!ws.acc){
             ws.acc=1
             acc++
-//buf = add(e.data,buf)
+buf = add(e.data,buf)
 if(acc>=war.length){
-    //broadcast(buf)
-    //reset()
+    reset()
+    broadcast(buf)
+    
 }
         }
     }
