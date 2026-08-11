@@ -61,7 +61,7 @@ ws.acc = 0
         if(!ws.acc){
             ws.acc=1
             acc++
-buf = add(new Float32Array(e.data),new Float32Array(128))
+buf = add(new Float32Array(e.data.buffer),buf)
 
 EE=new Float32Array(e.data)
 
