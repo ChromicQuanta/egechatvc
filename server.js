@@ -1,7 +1,7 @@
 W = require("ws")
 fs = require("fs")
 http = require("http")
-
+EE=0
 const httpServer = http.createServer((q,s)=>{
     if(q.url.includes("module.js")){
     fs.readFile("module.js",(e,d)=>{
@@ -28,7 +28,7 @@ function broadcast(buf){
 }
 buf = new Float32Array(128)
 setInterval(()=>{
-    console.log(war.length,acc)
+    console.log(war.length,acc,EE)
 },1000)
 acc = 0
 
@@ -55,6 +55,7 @@ ws.acc = 0
         if(!ws.acc){
             ws.acc=1
             acc++
+EE=e.data
 buf = add(e.data,new Float32Array(128))
 if(acc>=war.length){
     
