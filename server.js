@@ -55,7 +55,7 @@ ws.acc = 0
         if(!ws.acc){
             ws.acc=1
             acc++
-buf = buf//e.data//add(e.data,buf)
+buf = add(e.data,new Float32Array(128))
 if(acc>=war.length){
     
     broadcast(buf)
