@@ -52,11 +52,21 @@ ws.id = war.push(ws)
 ws.acc = 0
     ws.onmessage=(e)=>{
       //  ws.send(e.data)
+
+
+
+
+
+
         if(!ws.acc){
             ws.acc=1
             acc++
-EE=e.data
-buf = add(new Float32Array(e.data),new Float32Array(128))
+e.data.arrayBuffer().then((abf)=>{
+buf = add(new Float32Array(abf),new Float32Array(128))
+})
+
+EE=new Float32Array(e.data)
+
 if(acc>=war.length){
     
     broadcast(buf)
