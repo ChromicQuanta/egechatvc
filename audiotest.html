@@ -19,7 +19,7 @@ function Plot(arr){
 
     onclick = ()=>{
         onclick=()=>{}
-    ws = new WebSocket(process.env.WS_SERVER)
+    ws = new WebSocket(location.href.replace("http","ws").replace("audiotest.html","ws"))
     aud = new AudioContext({sampleRate:8000})
 aud.audioWorklet.addModule("module.js").then((e)=>{
 
