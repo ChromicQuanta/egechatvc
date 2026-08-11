@@ -9,6 +9,7 @@ function Plot(arr){
     c.strokeStyle="#FFF"
     c.fillRect(0,0,128,128)
     for(n=0;n<127;n++){
+        c.beginPath()
         c.moveTo(n,64-arr[n])
         c.lineTo(n+1,64-arr[n+1])
         c.stroke()
