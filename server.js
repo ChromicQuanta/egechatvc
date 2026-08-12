@@ -28,7 +28,11 @@ function broadcast(buf){
 }
 buf = new Float32Array(128)
 setInterval(()=>{
-    console.log(war.length,acc,EE)
+    ans = []
+for(n=0;n<war.length;n++){
+    ans.push(war[n].id)
+}
+    console.log(war.length,acc,EE,ans)
 },1000)
 acc = 0
 
