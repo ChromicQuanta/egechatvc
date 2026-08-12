@@ -52,7 +52,7 @@ function add(data1,data2){
     return ans
 }
 srv.on("connection",(ws)=>{
-ws.id = war.push(ws)
+ws.id = war.push(ws)-1
 ws.acc = 0
 ws.sound = new Float32Array(128)
     ws.onmessage=(e)=>{
