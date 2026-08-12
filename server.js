@@ -55,7 +55,7 @@ ws.sound = new Float32Array(128)
       //  ws.send(e.data)
 
 //buf = add(new Float32Array(new Uint8Array(e.data).buffer),buf)
-this.sound=new Float32Array(new Uint8Array(e.data).buffer)
+e.target.sound=new Float32Array(new Uint8Array(e.data).buffer)
 EE=new Uint8Array(e.data).length//(new Uint8Array(e.data.buffer)).length//Float32Array(buf)
 
 buf = new Float32Array(128)
@@ -64,12 +64,12 @@ buf = add(buf,war[n].sound)
 }
 ws.send(buf)
     }
-    ws.onclose=()=>{
+    ws.onclose=(e)=>{
 
-        for(let n=ws.id+1;n<war.length;n++){
+        for(let n=e.target.id+1;n<war.length;n++){
             war[n].id--
         }
-        if(this.acc) acc--
-        war.splice(this.id,1)
+        if(e.target.acc) acc--
+        war.splice(e.target.id,1)
     }
 })
