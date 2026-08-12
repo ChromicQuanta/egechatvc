@@ -50,28 +50,19 @@ function add(data1,data2){
 srv.on("connection",(ws)=>{
 ws.id = war.push(ws)
 ws.acc = 0
+ws.sound = new Float32Array(128)
     ws.onmessage=(e)=>{
       //  ws.send(e.data)
 
-
-
-
-
-
-        if(!ws.acc){
-            ws.acc=1
-            acc++
-buf = add(new Float32Array(new Uint8Array(e.data).buffer),buf)
-
+//buf = add(new Float32Array(new Uint8Array(e.data).buffer),buf)
+this.sound=new Float32Array(new Uint8Array(e.data).buffer)
 EE=new Uint8Array(e.data).length//(new Uint8Array(e.data.buffer)).length//Float32Array(buf)
 
-if(acc>=war.length){
-    
-    broadcast(buf)
-    
-    reset()
+buf = new Float32Array(128)
+for(let n=0;n<war.length;n++){
+buf = add(buf,war[n].sound)
 }
-        }
+ws.send(buf)
     }
     ws.onclose=()=>{
 
