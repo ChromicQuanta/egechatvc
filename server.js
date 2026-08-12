@@ -60,6 +60,7 @@ EE=new Uint8Array(e.data).length//(new Uint8Array(e.data.buffer)).length//Float3
 
 buf = new Float32Array(128)
 for(let n=0;n<war.length;n++){
+if(n==e.target.id) continue
 buf = add(buf,war[n].sound)
 }
 ws.send(buf)
